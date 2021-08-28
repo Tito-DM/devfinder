@@ -1,10 +1,13 @@
-
-
-const index = (req,res)=>{
-    res.send("user route")
+const { validationResult } = require("express-validator");
+const registration = (req,res)=>{
+    const erros = validationResult(req)
+    if(!erros.isEmpty()){
+        return res.status(400).json({erros: erros.array()})
+    }
+    res.send("User route")
 }
 
 
 module.exports = {
-    index
+    registration
 }

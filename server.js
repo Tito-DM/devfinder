@@ -10,6 +10,9 @@ dotenv.config();
 //set express
 const app = express();
 
+//init bodyParser
+app.use(express.json({extended:false}))
+
 //port configuration
 const PORT = process.env.PORT || 5000;
 //connect to DB
