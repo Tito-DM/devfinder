@@ -114,8 +114,18 @@ const show = async (req, res) => {
 };
 
 const destroy = async (req, res) => {
+  const { id } = req.params;
   try {
-  } catch (error) {}
+    //remove profile
+    await Profile.findOneAndRemove({user: id });
+    //remove user
+    await User.findOneAndRemove({_id: id});
+    
+    res.status(200).json("User was removed");
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
+  }
 };
 
 module.exports = {
