@@ -117,10 +117,10 @@ const destroy = async (req, res) => {
   const { id } = req.params;
   try {
     //remove profile
-    await Profile.findOneAndRemove({user: id });
+    await Profile.findOneAndRemove({ user: id });
     //remove user
-    await User.findOneAndRemove({_id: id});
-    
+    await User.findOneAndRemove({ _id: id });
+
     res.status(200).json("User was removed");
   } catch (error) {
     console.error(error.message);
@@ -128,7 +128,35 @@ const destroy = async (req, res) => {
   }
 };
 
+const exp = async (req, res) => {
+  const erros = validationResult(req);
+
+  if (!erros.isEmpty()) return res.status(400).json({ erros: erros.array() });
+  const { title, company, location, from, to, current, description } = req.body;
+  const newExp = {
+    title,
+    company,
+    location,
+    from,
+    to,
+    current,
+    description,
+  };
+
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+    console.log(req.user.id)
+    profile.experience.unshift(newExp);
+    await profile.save();
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
+  }
+};
+
 module.exports = {
+  exp,
   index,
   create,
   show,
