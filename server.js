@@ -5,6 +5,8 @@ const userRoute = require("./routes/user");
 const authRoute = require("./routes/auth");
 const postRoute = require("./routes/post");
 const profileRoute = require("./routes/profile");
+
+
 dotenv.config();
 
 //set express

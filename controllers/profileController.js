@@ -2,6 +2,32 @@ const Profile = require("../models/Profile");
 const User = require("../models/User");
 const { validationResult } = require("express-validator");
 
+const index = async (req, res) => {
+  try {
+    const profile = await Profile.find().populate("user", ["name", "avatar"]);
+    res.status(200).json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
+  }
+};
+
+const single_user = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const profile = await Profile.findOne({ user: id }).populate("user", [
+      "name",
+      "avatar",
+    ]);
+    if (!profile)
+      return res.status(400).json({ msg: "There is no profile for this user" });
+    res.status(200).json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
+  }
+};
+
 const create = async (req, res) => {
   const erros = validationResult(req);
   if (!erros.isEmpty()) {
@@ -87,19 +113,15 @@ const show = async (req, res) => {
   }
 };
 
-const update = async (req, res) => {
-  try {
-  } catch (error) {}
-};
-
 const destroy = async (req, res) => {
   try {
   } catch (error) {}
 };
 
 module.exports = {
+  index,
   create,
   show,
-  update,
   destroy,
+  single_user,
 };

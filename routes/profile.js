@@ -15,7 +15,8 @@ router.post(
   profileController.create
 );
 router.get("/me", auth, profileController.show);
-router.put("/:id", auth, profileController.update);
+router.get("/", profileController.index);
+router.get("/user/:id", profileController.single_user);
 router.delete("/:id", auth, profileController.destroy);
 
 module.exports = router;
