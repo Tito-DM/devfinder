@@ -17,6 +17,7 @@ router.post(
 router.get("/me", auth, profileController.show);
 router.get("/", profileController.index);
 router.get("/user/:id", profileController.single_user);
+router.delete("/experience/:id", auth,profileController.removeExperience);
 router.put(
   "/experience",
   [
@@ -27,6 +28,19 @@ router.put(
   ],
   profileController.exp
 );
+
+router.put(
+  "/education",
+  [
+    auth,
+    check("school", "school is required").not().isEmpty(),
+    check("degree", "degree is required").not().isEmpty(),
+    check("from", "from date is required").not().isEmpty(),
+    check("fieldofstudy", "Field of Study is required").not().isEmpty(),
+  ],
+  profileController.education
+);
+router.delete("/education/:id", auth,profileController.removeEducation);
 router.delete("/:id", auth, profileController.destroy);
 
 module.exports = router;

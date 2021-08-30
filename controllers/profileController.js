@@ -145,7 +145,7 @@ const exp = async (req, res) => {
 
   try {
     const profile = await Profile.findOne({ user: req.user.id });
-    console.log(req.user.id)
+   
     profile.experience.unshift(newExp);
     await profile.save();
     res.json(profile);
@@ -154,8 +154,74 @@ const exp = async (req, res) => {
     res.status(500).send("Server Error");
   }
 };
+const removeExperience = async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+    
+    //get experience index
+    const remove =  profile.experience
+      .map((item) => item.id)
+      .indexOf(req.params.id);
+    profile.experience.splice(remove, 1);
+
+    await profile.save();
+
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
+  }
+};
+
+const education = async (req, res) => {
+  const erros = validationResult(req);
+
+  if (!erros.isEmpty()) return res.status(400).json({ erros: erros.array() });
+  const { school, degree, fieldofstudy, from, to, current, description } = req.body;
+  const newEducation = {
+    school,
+    degree,
+    fieldofstudy,
+    from,
+    to,
+    current,
+    description,
+  };
+
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+   
+    profile.education.unshift(newEducation);
+    await profile.save();
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
+  }
+};
+const removeEducation = async (req, res) => {
+  try {
+    const profile = await Profile.findOne({ user: req.user.id });
+    
+    //get experience index
+    const remove =  profile.education
+      .map((item) => item.id)
+      .indexOf(req.params.id);
+    profile.education.splice(remove, 1);
+
+    await profile.save();
+
+    res.json(profile);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
+  }
+};
 
 module.exports = {
+  education,
+  removeEducation,
+  removeExperience,
   exp,
   index,
   create,
