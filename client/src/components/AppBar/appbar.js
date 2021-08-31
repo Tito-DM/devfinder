@@ -27,7 +27,15 @@ const AppBarComponent = () => {
           <FaList />
         </IconButton>
         <Typography variant="h6" noWrap>
-          Responsive drawer
+          <p class={`${classes.line}  ${classes.animTypewriter}`}>
+            <span className={classes.topheading}>1. console.</span>
+            <samp className={classes.symbols}>log</samp>
+            <span>&#40;</span>
+            <span className={classes.propsCode}>
+              &#34; HELLO WORLD  &#34;
+            </span>
+            <span>&#41;</span>&#59;
+          </p>
         </Typography>
       </Toolbar>
     </AppBar>
