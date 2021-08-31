@@ -1,20 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
-import IconButton from "@material-ui/core/IconButton";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import DrawerFunc from "./drawer";
+import DrawerFunc from "../Drawer/drawer";
 import { useTheme } from "@material-ui/core/styles";
 import { useStyles } from "./styles";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
-import { FaList } from "react-icons/fa";
+import AppBarComponent from "../AppBar/appbar";
 
-function Home(props) {
+function Login(props) {
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -30,22 +26,7 @@ function Home(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar position="fixed" className={classes.appBar}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            onClick={handleDrawerToggle}
-            className={classes.menuButton}
-          >
-            <FaList/>
-          </IconButton>
-          <Typography variant="h6" noWrap>
-            Responsive drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <AppBarComponent />
       <nav className={classes.drawer} aria-label="mailbox folders">
         {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
@@ -131,12 +112,8 @@ function Home(props) {
   );
 }
 
-Home.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
+Login.propTypes = {
   window: PropTypes.func,
 };
 
-export default Home;
+export default Login;

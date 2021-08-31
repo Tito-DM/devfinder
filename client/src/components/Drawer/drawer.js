@@ -4,7 +4,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import { useStyles } from "./styles";
+import { useStyles } from "./drawerStyles";
 import Avatar from "@material-ui/core/Avatar";
 import { FaHome, FaCode,FaUserAlt,FaRegIdCard } from "react-icons/fa";
 const DrawerFunc = () => {
