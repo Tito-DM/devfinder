@@ -5,14 +5,19 @@ import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import DrawerFunc from "../Drawer/drawer";
 import { useTheme } from "@material-ui/core/styles";
-import { useStyles } from "./styles";
+import { useStyles } from "./signupStyle";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import AppBarComponent from "../AppBar/appbar";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import image from "../../asset/img/hardware.png"
 import axios from "axios";
-import image from "../../asset/img/hardware.png";
+import {connect} from "react-redux"
+import {setAlert} from "../../action/alert"
+import Alert from '@material-ui/lab/Alert';
 
-function Login(props) {
+function SignUp(props) {
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -24,13 +29,16 @@ function Login(props) {
 
   const container =
     window !== undefined ? () => window().document.body : undefined;
-
-  //set login state
+  //formdata state
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
+    passwordConfirmation: "",
   });
-
+  //checkbox state
+  const [checkbox, setCheckbox] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   //handle input change
   const handleChange = (e) => {
     setFormData({
@@ -39,16 +47,22 @@ function Login(props) {
     });
   };
 
-  //handle from submit
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const res = await axios.post("/api/v1/auth/login", formData, {
-      headers: "application/json",
-    });
-
-    console.log(res);
+  const handleCheckBoxChange = (e) => {
+    setCheckbox(!checkbox);
+    if (e.target.value) setShowPassword(!showPassword);
   };
+
+  //handle from submit
+  const handleSubmit = async(e) => {
+    e.preventDefault();
+    //check if password match
+    if (formData.password === formData.passwordConfirmation) {
+      
+    } else {
+      props.setAlert("Password do not match", "red")
+    }
+  };
+
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -84,49 +98,75 @@ function Login(props) {
           </Drawer>
         </Hidden>
       </nav>
+      
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <h1
-          style={{
-            letterSpacing: "4px",
-            textAlign: "center",
-            fontWeight: "500",
-            textTransform: "uppercase",
-          }}
-        >
-          Connect with Others Developers & Engineers
-        </h1>
         <div className={classes.mainContent}>
+        <Alert severity="error">This is an error alert — check it out!</Alert>
           <form onSubmit={handleSubmit}>
             <div className={classes.formContainer}>
-              <label for="email">Email</label>
+              <label for="name">UserName</label>
+              <input
+                id="name"
+                className={classes.inputText}
+                type="text"
+                value={formData.name}
+                onChange={handleChange}
+                name="name"
+              />
+              <label id="email" for="email">
+                Email
+              </label>
               <input
                 className={classes.inputText}
                 type="text"
                 value={formData.email}
-                name="email"
                 onChange={handleChange}
+                name="email"
               />
               <label for="password">Password</label>
               <input
+                id="password"
+                className={classes.inputText}
+                type={showPassword ? "text" : "password"}
+                value={formData.password}
+                onChange={handleChange}
+                name="password"
+              />
+              <FormControlLabel
+                control={
+                  <Checkbox
+                    name="checkedA"
+                    value={checkbox}
+                    checked={checkbox}
+                    onChange={handleCheckBoxChange}
+                    color="primary"
+                  />
+                }
+                label="View Password"
+              />
+              <label for="password_Confirmation">Password Confirmation</label>
+              <input
+                id="password_Confirmation"
                 className={classes.inputText}
                 type="password"
-                value={formData.password}
-                name="password"
+                value={formData.passwordConfirmation}
                 onChange={handleChange}
+                name="passwordConfirmation"
               />
             </div>
+
             <Button variant="contained" color="primary" type="submit">
-              Login
+              Register
             </Button>
             <Link to="!#" className={classes.linkOpts}>
-              ou Create an Accout
+              ou login
             </Link>
           </form>
         </div>
       </main>
       <div className={classes.bkgElectronics}>
-        <img src={image} alt="electronic" width="100%" height="100%" />
+       <img src={image} alt="electronic" width="100%" height="100%"/>
       </div>
 
       <div className={classes.codeStyleContainer}>
@@ -164,8 +204,8 @@ function Login(props) {
   );
 }
 
-Login.propTypes = {
+SignUp.propTypes = {
   window: PropTypes.func,
 };
 
-export default Login;
+export default connect(null,{setAlert})(SignUp);

@@ -6,14 +6,14 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import { useStyles } from "./drawerStyles";
 import Avatar from "@material-ui/core/Avatar";
-import { FaHome, FaCode,FaUserAlt,FaRegIdCard } from "react-icons/fa";
+import { FaUserCircle, FaCode,FaUserAlt,FaRegIdCard,FaRegCommentAlt } from "react-icons/fa";
 const DrawerFunc = () => {
   const classes = useStyles();
 
   const iconMenu = [
     {
-      title: "Home",
-      icon: <FaHome size="23px" />,
+      title: "Profile",
+      icon: <FaUserCircle size="23px" />,
     },
 
     {
@@ -24,6 +24,10 @@ const DrawerFunc = () => {
     {
       title: "Login",
       icon: <FaUserAlt size="23px" />,
+    },
+    {
+      title: "Posts",
+      icon: <FaRegCommentAlt size="23px" />,
     },
     {
       title: "Sign Up",

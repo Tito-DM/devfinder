@@ -51,13 +51,13 @@ animTypewriter: {
   "to" : {borderRightColor: "transparent"}
 },
 topheading: {
-  color: "#357a38",
+  color: "#64dd17",
 },
 symbols: {
-  color: "#1769aa",
+  color: "#03a9f4",
 },
 propsCode: {
-  color: "#ab003c",
+  color: "#ff5722",
 },
 
  

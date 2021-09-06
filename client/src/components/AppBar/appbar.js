@@ -28,11 +28,11 @@ const AppBarComponent = () => {
         </IconButton>
         <Typography variant="h6" noWrap>
           <p class={`${classes.line}  ${classes.animTypewriter}`}>
-            <span className={classes.topheading}>1. console.</span>
+          1.<span className={classes.topheading}> console.</span>
             <samp className={classes.symbols}>log</samp>
             <span>&#40;</span>
             <span className={classes.propsCode}>
-              &#34; HELLO WORLD  &#34;
+              &#34; HELLO  &#127757; &#128225; &#128187; 🔌 💾 &#34;
             </span>
             <span>&#41;</span>&#59;
           </p>

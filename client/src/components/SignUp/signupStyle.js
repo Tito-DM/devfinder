@@ -1,14 +1,10 @@
 import { makeStyles } from "@material-ui/core/styles";
 
-
-
 const drawerWidth = 240;
 
 export const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
-    
-
   },
   drawer: {
     [theme.breakpoints.up("sm")]: {
@@ -46,7 +42,7 @@ export const useStyles = makeStyles((theme) => ({
   mainContent: {
     position: "absolute",
     width: "40%",
-    top: "35%",
+    top: "33%",
     left: "55%",
     fontSize: "large",
     transform: "translate(-50%,-50%)",
@@ -100,6 +96,5 @@ export const useStyles = makeStyles((theme) => ({
     position:"absolute",
     bottom:0,
     right:0,
-    color: "white"
-  }
+  },
 }));
