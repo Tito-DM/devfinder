@@ -16,8 +16,6 @@ import Avatar from "@material-ui/core/Avatar";
 import ExperiencePaper from "../PaperComponent/experience";
 import RepoPaper from "../PaperComponent/repo";
 
-
-
 const Profile = (props) => {
   const { window } = props;
   const classes = useStyles();
@@ -111,22 +109,38 @@ const Profile = (props) => {
                   </div>
 
                   <div>
-                    <h1 style={{
-                      letterSpacing: "2px",
-                      fontWeight: "500",
-                      textTransform: "capitalize"
-                      
-                    }}>Tito Domingos Muanda</h1>
-                    <div>
-                      <p>website</p>
-                      <p>status</p>
-                      <p>Location</p>
-                      <p>Company</p>
-                    </div>
+                    <h1
+                      style={{
+                        letterSpacing: "2px",
+                        fontWeight: "bold",
+                        textTransform: "capitalize",
+                      }}
+                    >
+                      Tito Domingos Muanda
+                    </h1>
+                    <div className={classes.profileSubTextContainer}>
+                      <span className={classes.subText}>website: </span>
+                      <span className={classes.subTextAnswer}>{"www.myweb.com"}</span>
+                      </div>
+
+                      <div className={classes.profileSubTextContainer}>
+                      <span className={classes.subText}>status: </span>
+                      <span className={classes.subTextAnswer}>{"Student"}</span>
+                      </div>
+
+                      <div className={classes.profileSubTextContainer}>
+                      <span className={classes.subText}>Location: </span>
+                      <span className={classes.subTextAnswer}>{"LB"} </span>
+                      </div>
+
+                      <div className={classes.profileSubTextContainer}>
+                      <span className={classes.subText}>Company: </span>
+                      <span className={classes.subTextAnswer}>{"MyBits"}</span>
+                      </div>
 
                     <Divider />
                     <div>
-                      <h5>Bio</h5>
+                      <h3>Bio</h3>
                       <p>
                         lAliqua officia elit cillum pariatur eiusmod. Dolore ad
                         laboris cillum cillum laborum qui dolore anim duis
@@ -151,7 +165,7 @@ const Profile = (props) => {
               <ExperiencePaper title="Expirience" color="primary" />
             </Grid>
             <Grid item xs={6}>
-              <RepoPaper title="Repos" color="" />
+              <RepoPaper title=" GitHub Repos" color="" />
             </Grid>
           </Grid>
         </Container>

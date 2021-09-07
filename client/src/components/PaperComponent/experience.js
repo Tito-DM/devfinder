@@ -25,17 +25,14 @@ const ExperiencePaper = ({ title, color }) => {
             </div>
             <div className={classes.textContent}>
               <span className={classes.uniText}>
-                Tswane University of Technology
+                Crafty Bytis
               </span>
               <span className={classes.uniSubText}>
-                Computer System Engineering
+                Web Developer
               </span>
               <span>12-05-2017</span>
             </div>
           </div>
-
-
-
 
           <div className={classes.paperContent}>
             <div className={classes.profileIcon}>

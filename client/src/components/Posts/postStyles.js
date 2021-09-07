@@ -5,6 +5,12 @@ const drawerWidth = 240;
 export const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+
+    
+  },
+  carRoot:{
+    maxWidth: "100%",
+    maxHeight:"50%"
   },
   drawer: {
     [theme.breakpoints.up("sm")]: {
@@ -34,43 +40,12 @@ export const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
   },
-  btnInfo: {
-    position: "absolute",
-    left: "25%",
+  
+  media: {
+    height: 140,
   },
-
-  mainInfo: {
-    display: "flex",
-    flexDirection: "row",
-  },
-  profileAvatar: {
-    width: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-
-  avatarWidth: {
-    width: "300px",
-    height: "300px",
-  },
-
-  subText: {
-    fontSize: "large",
-    letterSpacing: "2px",
-    textTransform: "capitalize",
-    fontWeight: "600",
-    padding: "10px"
-  },
-  subTextAnswer:{
-    fontSize: "medium",
-    textTransform: "capitalize",
-    fontWeight: "500",
-    padding: "10px"
-  },
-  profileSubTextContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
+  
+  avatar: {
+    backgroundColor: "red",
   },
 }));

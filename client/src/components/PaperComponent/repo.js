@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { useStyles } from "./paperStyle";
-import { FaBuilding } from "react-icons/fa";
+import { RiGitRepositoryFill} from "react-icons/ri";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 
@@ -21,35 +21,41 @@ const RepoPaper = ({ title, color }) => {
         <div className={classes.main}>
           <div className={classes.paperContent}>
             <div className={classes.profileIcon}>
-              <FaBuilding size="50px" />
+              <RiGitRepositoryFill size="50px" />
             </div>
             <div className={classes.textContent}>
               <span className={classes.uniText}>
-                Tswane University of Technology
+                Bingo Book Project
               </span>
               <span className={classes.uniSubText}>
-                Computer System Engineering
+                javascript
               </span>
               <span>12-05-2017</span>
             </div>
           </div>
 
+
+
+
           <div className={classes.paperContent}>
             <div className={classes.profileIcon}>
-              <FaBuilding size="50px" />
+              <RiGitRepositoryFill size="50px" />
             </div>
             <div className={classes.textContent}>
               <span className={classes.uniText}>
-                Universidade Nova de Lisboa
+                Home Automation System
               </span>
               <span className={classes.uniSubText}>
-                Electrical & computer Engimeering
+                c/c++
               </span>
               <span>12-05-2017</span>
             </div>
           </div>
         </div>
+
+        
       </Paper>
+
     </Fragment>
   );
 };
