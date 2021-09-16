@@ -10,7 +10,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   carRoot:{
     maxWidth: "100%",
-    maxHeight:"50%"
+    maxHeight:"60%"
   },
   drawer: {
     [theme.breakpoints.up("sm")]: {

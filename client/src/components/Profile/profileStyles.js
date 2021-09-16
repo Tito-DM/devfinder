@@ -30,9 +30,9 @@ export const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
   },
   content: {
-    marginTop: "90px",
+    marginTop: "80px",
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(5),
   },
   btnInfo: {
     position: "absolute",
